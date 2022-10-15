@@ -23,4 +23,5 @@ One way to minimize the constfunction `J` is applying gradient descent.
 By repeating calculating the partial derivatives using updated `a` and `b` 
 each time we can find decent values for `a` and `b` after a few repetitions.
 
--> See [this script](./snippets/gradient_descent_single_param.py) as a reference.
+-> See [single feature script](./snippets/linear_regression_single_feature.py) as a reference.
+-> See [multi feature script](./snippets/linear_regression_multi_feature.py) as a reference.

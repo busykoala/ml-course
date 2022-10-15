@@ -43,3 +43,8 @@ def linear_regression(X, y, alpha=0.6, epochs=100000):
     predict = lambda x: thetas[0] + sum([th * x for th, x in zip(thetas[1:], x)])
     return predict
 ```
+
+### Learning Rate
+
+The snippet [learning rate](./snippets/learning_rate.py) contains a simple
+approach to find a good learning rate with little computation.

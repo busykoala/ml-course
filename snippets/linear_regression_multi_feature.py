@@ -29,6 +29,19 @@ def gradient_descent(X, y, alpha=0.1, epochs=10):
     return thetas
 
 
+def gradient_descent_improved(X, y, alpha=0.6, epochs=10):
+    # add additional row of ones (theta_0 * 1)
+    X = np.concatenate((np.ones([X.shape[0],1], X.dtype), X), 1)
+    m = len(X)
+    n = len(X[0])
+    thetas = np.zeros(n)
+    for _ in range(epochs):
+        hypothesis = np.dot(X, thetas)
+        cost = hypothesis - y
+        thetas = thetas - alpha / m * np.sum((cost * X.T), axis=1)
+    return thetas
+
+
 def plot_2D_set():
     X, y = datasets.load_diabetes(return_X_y=True)
     X = np.delete(X, np.s_[3:], axis=1)
@@ -53,16 +66,18 @@ def plot_2D_set():
 def run_multiD_set():
     X, y = datasets.load_diabetes(return_X_y=True)
 
+    # normalize data
     minmax_scaler = preprocessing.MinMaxScaler(feature_range=(0,1))
     X = minmax_scaler.fit_transform(X)
 
     X_train = X[:-20]
     y_train = y[:-20]
 
-    thetas = gradient_descent(X_train, y_train, epochs=20000, alpha=0.6)
+    thetas = gradient_descent_improved(X_train, y_train, epochs=100000)
     regr = LinearRegression().fit(X_train, y_train)
     summ = np.sum((np.array(thetas[1:]) - regr.coef_)**2)
     print(f"sum of sqared diffs between gradient descent and scikit: {summ}")
+    print("*" * 50)
     print(thetas)
 
 

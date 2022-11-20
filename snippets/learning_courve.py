@@ -29,7 +29,7 @@ plt.title("Learning Curve with Ridge")
 plt.xlabel("Training Examples")
 plt.ylabel("Score")
 lw = 2
-plt.semilogx(
+plt.plot(
     train_sizes, train_scores_mean,
     label="Training score",
     color="darkorange",
@@ -43,7 +43,7 @@ plt.fill_between(
     color="darkorange",
     lw=lw,
 )
-plt.semilogx(
+plt.plot(
     train_sizes,
     valid_scores_mean,
     label="Cross-validation score",

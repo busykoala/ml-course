@@ -1,13 +1,47 @@
 # Improvements & Debugging
 
+## Relevant Terms
+
+> Underfitting is called "Simplifying assumption" (Model is HIGHLY
+> BIASED towards its assumption). your model will think linear
+> hyperplane is good enough to classify your data which may not
+> be true. consider you are shown a picture of cat 1000 times,
+> Now you are blindfolded, No matter Whatever you are shown the
+> 1001th time, probability that you will say cat is very high
+> (You are HIGHLY BIASED that the next picture is also gonna
+> be a cat). Its because you believe its gonna be a cat anyway.
+> Here you are simplifying assumptions
+> 
+> In statistics, Variance informally means how far your data
+> is spread out. Overfitting is you memorise 10 qns for your exam
+> and on the next day exam, only one question has been asked in the
+> question paper from that 10 you read. Now you will answer that one
+> qn correctly just like in the book, but you have no idea what the
+> remaining questions are(Question are HIGHLY VARIED from what
+> you read). In overfitting, model will memorise the entire train
+> data such that it will give high accuracy on train but will
+> suck in test. Hope its helps
+>
+> -- https://stackoverflow.com/a/2002150
+
+
 ## Possible Improvements
 
 - More training examples
+  - fix high variance in learning/validation curve
+    (big distance between the lines)
 - Smaller sets of features
+  - fix high variance in learning/validation curve
+    (big distance between the lines)
 - Additional features
+  - fix high bias (oversimplified model)
 - Polynomial features
-- Decreasing lambda
-- Increasing lambda
+  - fix high bias (oversimplified model)
+- Decreasing regularization
+  - fix high bias (oversimplified model)
+- Increasing regularization
+  - fix high variance in learning/validation curve
+    (big distance between the lines)
 
 ## Choose Model
 

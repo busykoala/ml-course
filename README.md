@@ -13,3 +13,4 @@
 
 **Unsupervised Learning**
 - [K-Means](./k_means.md)
+- [PCA](./pca.md)

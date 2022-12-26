@@ -7,3 +7,4 @@
 - [Logistic Regression](./logistic_regression.md)
 - [Neural Network](./neural_network.md)
 - [Improvements & Debugging](./improvements_debugging.md)
+- [Skewed Data](./skewed_data.md)

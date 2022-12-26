@@ -30,3 +30,5 @@ desired level of dimensionality reduction. Finally, you can project the data
 onto the selected principal components to obtain the transformed dataset.
 
 There is a sklearn and numpy implementation [in this snippet](./snippets/pca.py).
+
+Also there is an example of finding the optimal k-value.

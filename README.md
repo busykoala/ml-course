@@ -26,3 +26,7 @@
 **Large Data Sets & Online Learning**
 - [Stochastic/Mini Batch](./stoch_mini_batch.md)
 - [Online Learning](./online.md)
+
+**Debugging**
+- [Ceiling Analysis](./ceiling_analysis.md)
+- [Improvements & Debugging](./improvements_debugging.md)

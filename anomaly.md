@@ -15,4 +15,5 @@ each sample under the distribution, and classifies samples as anomalies if
 their probability is below the threshold. This allows you to identify unusual
 or unexpected samples in the data.
 
-Checkout [this script](./snippets/anomaly_detection.py) as a reference.
+Checkout [this script](./snippets/anomaly_detection.py) as a reference. There
+is also an example with OneClassSVM (sklearn).

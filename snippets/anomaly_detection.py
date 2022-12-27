@@ -1,46 +1,57 @@
-import numpy as np
+from scipy.stats import multivariate_normal
 from scipy.stats import norm
-import numpy as np
-from sklearn.svm import OneClassSVM
+from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import recall_score, f1_score, classification_report
+from sklearn.svm import OneClassSVM
+import numpy as np
+import numpy as np
 
 
-def anomaly_detection(X, threshold):
-    # calculate mean and standard deviation of each feature
-    mu = np.mean(X, axis=0)
-    sigma = np.std(X, axis=0)
-    # calculate probability of each sample under the Gaussian distribution
-    probabilities = norm.pdf(X, mu, sigma)
-    # classify samples as anomalies if probability is below the threshold
-    anomalies = probabilities < threshold
-    return anomalies
-
-
-def one_class_svm_example():
-    size = 20000
-    X = np.random.normal(size=(size, 3))
-    y = np.ones(size)
-    # add some anomalies to the dataset
-    X[:10] = np.random.uniform(low=-5, high=5, size=(10, 3))
-    y[:10] = -1
-
+def gaussian(X, y, threshold):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-    model = OneClassSVM(kernel='rbf', nu=0.1)
+    mu = np.mean(X_train, axis=0)
+    sigma = np.std(X_train, axis=0)
+    probabilities = norm.pdf(X_test, mu, sigma)
+    y_pred = np.max((probabilities < threshold).astype(int), axis=1)
+    # replace 1 with -1 and 0 with one according to the given y
+    y_pred = np.where(y_pred == 1, -1, 1)
+    print("Gaussian:")
+    print(classification_report(y_test, y_pred))
+    print("-" * 50)
+
+
+def multivariate_gaussian(X, y, threshold):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    mu = np.mean(X_train, axis=0)
+    sigma = np.cov(X_train.T)
+    probabilities = multivariate_normal.pdf(X_test, mean=mu, cov=sigma)
+    y_pred = (probabilities < threshold).astype(int)
+    # replace 1 with -1 and 0 with one according to the given y
+    y_pred = np.where(y_pred == 1, -1, 1)
+    print("Multivariate Gaussian:")
+    print(classification_report(y_test, y_pred))
+    print("-" * 50)
+
+
+def one_class_svm_example(X, y, threshold):
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+    model = OneClassSVM(kernel='rbf', nu=threshold)
     model.fit(X_train)
     y_pred = model.predict(X_test)
+    print("OneClassSVM:")
     print(classification_report(y_test, y_pred))
+    print("-" * 50)
 
 
-X = np.random.normal(size=(100, 3))
-threshold = 0.01
-anomalies = anomaly_detection(X, threshold)
+if __name__ == '__main__':
+    anomaly_size = 100
+    X_size = (10000, 3)
+    X = np.random.normal(size=X_size)
+    X[:anomaly_size] = np.random.uniform(low=-5, high=5, size=(anomaly_size, X_size[1]))
+    y = np.ones(X.shape[0])
+    y[:anomaly_size] = -1
+    threshold = 0.01
 
-anomaly_indices = np.where(np.any(anomalies, axis=1))[0]
-X_anomalies = X[anomaly_indices]
-print("Gaussian Anomaly Detection - Anomalies Found:")
-print(X_anomalies)
-print()
-
-print("One Class SVM:")
-one_class_svm_example()
+    gaussian(X, y, threshold)
+    multivariate_gaussian(X, y, threshold)
+    one_class_svm_example(X, y, threshold)

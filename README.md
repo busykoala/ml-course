@@ -22,3 +22,6 @@
 
 **Recommender System**
 - [Recommender Systems Overview](./recommender.md)
+
+**Large Data Sets**
+- [Stochastic/Mini Batch](./stoch_mini_batch.md)

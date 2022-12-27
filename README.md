@@ -1,5 +1,9 @@
 # ML Course
 
+## Choose the right algorithm
+
+![Choose right algorithm](./assets/choose-algorithm.webp)
+
 ## Topics
 
 **Supervised Learning**
@@ -15,3 +19,6 @@
 - [K-Means](./k_means.md)
 - [PCA](./pca.md)
 - [Anomaly Detection](./anomaly.md)
+
+**Recommender System**
+- [Recommender Systems Overview](./recommender.md)

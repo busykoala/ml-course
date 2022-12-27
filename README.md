@@ -23,5 +23,6 @@
 **Recommender System**
 - [Recommender Systems Overview](./recommender.md)
 
-**Large Data Sets**
+**Large Data Sets & Online Learning**
 - [Stochastic/Mini Batch](./stoch_mini_batch.md)
+- [Online Learning](./online.md)

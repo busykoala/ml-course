@@ -1,5 +1,7 @@
 # Support Vector Machines
 
+Calculates vector between "clusters" that has the highest margin.
+
 ## Bias & Variance
 
 **Term C:**

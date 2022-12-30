@@ -1,6 +1,7 @@
 # Support Vector Machines
 
 Calculates vector between "clusters" that has the highest margin.
+There is a trade off between total errors and the margin of the vector.
 
 ## Bias & Variance
 
